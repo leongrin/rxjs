@@ -22,7 +22,8 @@ export class HomeComponent implements OnInit {
 
     ngOnInit() {
       this.courses$ = this.http$.pipe(
-        map((res: { payload: [] }) => res.payload)
+        map((res: { payload: [] }) => res.payload),
+        shareReplay()
       );
 
       this.beginnerCourses$ = this.courses$.pipe(
