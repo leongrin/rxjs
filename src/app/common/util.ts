@@ -1,8 +1,8 @@
 import {Observable} from 'rxjs';
 
 export function createHttpObservable(url: string) {
-  return new Observable(observer => {
-    fetch('api/courses')
+  return new Observable<any>(observer => {
+    fetch(url)
       .then(response => {
         return response.json();
       })
@@ -12,7 +12,7 @@ export function createHttpObservable(url: string) {
       })
       .catch(err => {
         observer.error(err);
-      })
+      });
   });
 }
 
